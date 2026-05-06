@@ -1,54 +1,1146 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <base target="_blank">
   <meta charset="UTF-8" />
-  <title>Portfolio</title>
-  <meta property="og:image" content="assets/favicon.png"/>
-  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
-  <!-- remember, jQuery is completely optional -->
-  <!-- <script type='text/javascript' src='js/jquery-1.11.1.min.js'></script> -->
-  <script type="text/javascript" src="js/jquery.particleground.js"></script>
-  <script type="text/javascript" src="js/demo.js"></script>
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ControlFreak — A high-precision Life OS for iOS. Manage your wellness, work, and logistics with calm, competent control." />
+  <meta name="keywords" content="ControlFreak, Life OS, productivity, wellness, iOS app, personal logistics, habit tracking, sleep tracking" />
+  <meta name="author" content="ControlFreak" />
+  <meta property="og:title" content="ControlFreak — Your Life, Under Control" />
+  <meta property="og:description" content="A high-precision Life OS for people who want calm through competence. Wellness, work, habits, and logistics — unified." />
+  <meta property="og:type" content="website" />
+  <title>ControlFreak — Your Life, Under Control</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --ink: #1a1a1a;
+      --ink-soft: #4a4a4a;
+      --ink-muted: #8a8a8a;
+      --cream: #f7f4ef;
+      --cream-dark: #ede9e1;
+      --accent: #2c5f2e;
+      --accent-light: #4a8c4d;
+      --accent-pale: #e8f0e8;
+      --rule: #d4cfc6;
+      --white: #ffffff;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 244, 239, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 5%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 5% 5rem;
+      background: linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 100%);
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(44,95,46,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: normal;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--ink-soft);
+      max-width: 560px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--ink);
+      padding: 0.875rem 2rem;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); background: var(--accent-pale); }
+
+    /* ── STATS STRIP ─────────────────────────────────────── */
+    .stats-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 2.5rem 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {}
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--accent);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────── */
+    section { padding: 6rem 5%; }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: normal;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── FEATURES GRID ───────────────────────────────────── */
+    .features {
+      background: var(--white);
+    }
+
+    .features-header {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    /* ── PRIVACY SECTION ─────────────────────────────────── */
+    .privacy-section {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .privacy-section .section-eyebrow { color: var(--accent-light); }
+    .privacy-section h2 { color: var(--cream); }
+    .privacy-section .section-lead { color: #b0ada6; }
+
+    .privacy-pillars {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .privacy-pillar {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+
+    .privacy-pillar h4 {
+      color: var(--cream);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-pillar p {
+      font-size: 0.875rem;
+      color: #8a8680;
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────────────── */
+    .how-it-works {
+      background: var(--cream-dark);
+    }
+
+    .steps-layout {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .steps-list { list-style: none; counter-reset: steps; }
+
+    .step {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .step-num::after { content: counter(steps); }
+
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-content p {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .steps-image {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      aspect-ratio: 9/16;
+      max-height: 540px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--ink-muted);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .mock-screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 0.75rem;
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mock-title {
+      color: #f7f4ef;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+    }
+
+    .mock-date {
+      color: #4a8c4d;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+    }
+
+    .mock-tile {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .mock-tile-label {
+      color: #8a8a8a;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.35rem;
+    }
+
+    .mock-tile-value {
+      color: #f7f4ef;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+    }
+
+    .mock-tile-sub {
+      color: #4a8c4d;
+      font-size: 0.65rem;
+      margin-top: 0.2rem;
+    }
+
+    .mock-ring-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .mock-ring {
+      flex: 1;
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring-svg { width: 60%; height: 60%; }
+
+    /* ── ABOUT ───────────────────────────────────────────── */
+    .about-section {
+      background: var(--white);
+    }
+
+    .about-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-body p {
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-size: 0.975rem;
+    }
+
+    .about-values {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .value-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .value-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .value-item h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .value-item p {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    .contact-section {
+      text-align: center;
+      background: var(--accent-pale);
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-section h2 { margin-bottom: 0.75rem; }
+    .contact-section .section-lead { margin: 0 auto 2.5rem; }
+
+    .contact-form {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--ink-muted); }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(44,95,46,0.12);
+    }
+
+    .form-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: #8a8680;
+      padding: 3rem 5%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: #5a5753;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #8a8680;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      background: #111;
+      padding: 1rem 5%;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #4a4845;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────────────── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* ── PRIVACY POLICY ──────────────────────────────────── */
+    .policy-section {
+      background: var(--cream);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .policy-section h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: normal;
+      color: var(--ink);
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .policy-section p, .policy-section li {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    .policy-section ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+    .policy-section li { margin-bottom: 0.4rem; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .steps-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .steps-image { display: none; }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<div id="particles">
-  <div id="intro">
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <a class="nav-brand" href="#home">Control<span>Freak</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#privacy-policy">Privacy Policy</a></li>
+    </ul>
+  </nav>
 
-    <div class="container">
-      <img src="assets/headshot.jpg" class="m-3 round" alt="image" width="200px" height="200px">
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <header class="hero" id="home">
+    <p class="hero-eyebrow">Life OS for iOS</p>
+    <h1>Your Life, <em>Under Control.</em></h1>
+    <p class="hero-sub">
+      ControlFreak is a high-precision personal logistics engine built for people who demand
+      calm through competence — not chaos through complexity.
+    </p>
+    <div class="cta-group">
+      <a href="#features" class="btn-primary">See What It Does</a>
+      <a href="#contact" class="btn-secondary">Join the Waitlist</a>
+    </div>
+  </header>
 
-
-      <h2 style="font-family: 'Syncopate', sans-serif; font-weight: 10;">Richard Aguilar&nbsp<a href="assets/RichardAguilar_Resume.pdf" style="color: white;"><i class="far fa-file-alt"></i></a></h2>
-        <hr style="width: 50%; background-color: #E83951; border-color: #E83951;">
-    <a href="https://www.linkedin.com/in/richard-w-aguilar/" style="color: white;"><i class="fab fa-linkedin" style="font-size: 2em;"></i></a>
-    &nbsp
-    <a href="https://github.com/raguilar0917" style="color: white;"><i class="fab fa-github" style="font-size: 2em;"></i></a>
-    &nbsp
-    <a href="https://medium.com/@#/" style="color: white;"><i class="fab fa-medium" style="font-size: 2em;"></i></a>
-
-
-    
-    <div class="mt-4">
-      <a href="https://github.com/raguilar0917/raguilar0917.github.io" class="btn btn-outline-danger btn-block" role="button" target="_blank"><i class="fab fa-github">&nbsp;</i>Portfolio Respository</a>
-      <br>
-      <a href="https://github.com/raguilar0917/SyrusSUITS" class="btn btn-outline-info btn-block" role="button" target="_blank"><i class="fab fa-github">&nbsp;</i>NASA S.U.I.T.S Syrus Project</a>
-      <br>
-      <a href="https://github.com/raguilar0917/rccsuits-website" class="btn btn-outline-primary btn-block" role="button" target="_blank"><i class="fab fa-github">&nbsp;</i>RCC NASA S.U.I.T.S Website</a>
-      <br>
-      <a href="https://github.com/raguilar0917/Filesystem-Project.git" class="btn btn-outline-warning btn-block" role="button" target="_blank"><i class="fab fa-github">&nbsp;</i>Linux File System Clone</a>
-      <br>
-      <a href="https://github.com/raguilar0917/SFSU-Marketplace.git" class="btn btn-outline-success btn-block" role="button" target="_blank"><i class="fab fa-github">&nbsp;</i>SFSU Student Market Place</a>
-      <br>
+  <!-- ── STATS STRIP ─────────────────────────────────────── -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-number">4</span>
+      <span class="stat-label">Life Domains</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Private by Default</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">0</span>
+      <span class="stat-label">Data Sold</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">iOS</span>
+      <span class="stat-label">Native First</span>
     </div>
   </div>
-</div>
+
+  <!-- ── FEATURES ───────────────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="features-header">
+      <p class="section-eyebrow">What ControlFreak Does</p>
+      <h2>One app. Every domain of your life.</h2>
+      <p class="section-lead">
+        From your morning workout rings to coordinating a group dinner — ControlFreak
+        pulls every thread of daily life into a single, quiet command center.
+      </p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">🏃</div>
+        <h3>Wellness Dashboard</h3>
+        <p>
+          Visual workout rings synced with Apple Health, sleep stage breakdowns,
+          7-night trend charts, and drag-and-drop wellness tiles — all at a glance,
+          none of it cluttered.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">😴</div>
+        <h3>Sleep Intelligence</h3>
+        <p>
+          Detailed sleep stage analysis — REM, deep, core, and awake — pulled directly
+          from HealthKit. Track sessions over a rolling 7-night window and understand
+          your actual rest quality.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>Ritual & Habit Tracking</h3>
+        <p>
+          Build streaks with custom habit tiles. Daily rituals with icons, progress bars,
+          and completion tracking. Create custom tiles for any routine that matters to you.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Work & Calendar</h3>
+        <p>
+          Unified view of your schedule, tasks, and focus time. Work data lives entirely
+          on-device — never synced to a cloud without your explicit consent.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h3>Logistics & Plans</h3>
+        <p>
+          Plan group outings with mapped itineraries, stop-by-stop logistics, and real-time
+          coordination. Share plans with a group without sharing your personal data.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Fortress Mode Privacy</h3>
+        <p>
+          Personal, wellness, and work data never leaves your device. Group coordination
+          uses isolated cloud storage. A strict two-tier privacy architecture that cannot
+          be overridden.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PRIVACY ─────────────────────────────────────────── -->
+  <section class="privacy-section" id="privacy">
+    <p class="section-eyebrow">Privacy Architecture</p>
+    <h2>Your data isn't a product.<br>It's a possession.</h2>
+    <p class="section-lead">
+      ControlFreak is built on a two-tier privacy model. Personal data stays local.
+      Shared data stays isolated. No exceptions, no opt-ins that quietly become opt-outs.
+    </p>
+    <div class="privacy-pillars">
+      <div class="privacy-pillar">
+        <h4>Local-Only Storage</h4>
+        <p>Wellness, sleep, workout, and personal data is stored in an on-device SQLite database.
+           It is never transmitted to any server — not even ours.</p>
+      </div>
+      <div class="privacy-pillar">
+        <h4>No Behavioural Profiling</h4>
+        <p>We collect no analytics on how you use the app. No telemetry, no crash reports
+           tied to your identity, no ad targeting — ever.</p>
+      </div>
+      <div class="privacy-pillar">
+        <h4>HealthKit Respect</h4>
+        <p>Health data read via Apple HealthKit is processed on-device only. We follow Apple's
+           HealthKit data usage guidelines strictly.</p>
+      </div>
+      <div class="privacy-pillar">
+        <h4>Minimal Cloud Footprint</h4>
+        <p>Only Group Plan features use cloud infrastructure — and only the data necessary
+           to coordinate with other users. Your identity remains pseudonymous.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ───────────────────────────────────── -->
+  <section class="how-it-works" id="how">
+    <p class="section-eyebrow">How It Works</p>
+    <h2>Calm through competence.</h2>
+    <div class="steps-layout">
+      <ol class="steps-list">
+        <li class="step">
+          <div class="step-num"></div>
+          <div class="step-content">
+            <h4>Connect Apple Health</h4>
+            <p>Grant read access to HealthKit. ControlFreak pulls your workouts, sleep stages,
+               and activity data — all processed locally on your device.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num"></div>
+          <div class="step-content">
+            <h4>Set Up Your Dashboard</h4>
+            <p>Choose which wellness tiles matter to you. Drag to reorder, hide what you don't
+               need, and create custom habit tiles for your personal rituals.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num"></div>
+          <div class="step-content">
+            <h4>Organise Your Work</h4>
+            <p>Add your schedule, tasks, and focus blocks to the Work view. Everything
+               stays on-device and integrates with your existing calendar.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num"></div>
+          <div class="step-content">
+            <h4>Coordinate Without Compromise</h4>
+            <p>Create Group Plans for outings, dinners, or trips. Share logistics with
+               specific people without exposing your personal wellness or work data.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Decorative mock screen -->
+      <div class="steps-image" aria-hidden="true">
+        <div class="mock-screen">
+          <div class="mock-header">
+            <span class="mock-title">Wellness</span>
+            <span class="mock-date">MON · 5 MAY</span>
+          </div>
+          <div class="mock-tile">
+            <div class="mock-tile-label">Sleep</div>
+            <div class="mock-tile-value">7h 22m</div>
+            <div class="mock-tile-sub">↑ 18 min vs avg</div>
+          </div>
+          <div class="mock-ring-row">
+            <div class="mock-ring">
+              <svg class="ring-svg" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="15" stroke="#333" stroke-width="4"/>
+                <circle cx="20" cy="20" r="15" stroke="#4a8c4d" stroke-width="4"
+                  stroke-dasharray="78" stroke-dashoffset="20" stroke-linecap="round"
+                  transform="rotate(-90 20 20)"/>
+              </svg>
+            </div>
+            <div class="mock-ring">
+              <svg class="ring-svg" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="15" stroke="#333" stroke-width="4"/>
+                <circle cx="20" cy="20" r="15" stroke="#4a8c4d" stroke-width="4"
+                  stroke-dasharray="78" stroke-dashoffset="35" stroke-linecap="round"
+                  transform="rotate(-90 20 20)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="mock-tile">
+            <div class="mock-tile-label">Morning Run</div>
+            <div class="mock-tile-value">5.2 km</div>
+            <div class="mock-tile-sub">32 min · Zone 3</div>
+          </div>
+          <div class="mock-tile">
+            <div class="mock-tile-label">Rituals Today</div>
+            <div class="mock-tile-value">3 / 5</div>
+            <div class="mock-tile-sub">Journaling · Reading · Cold Shower</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ───────────────────────────────────────────── -->
+  <section class="about-section" id="about">
+    <div class="about-layout">
+      <div class="about-body">
+        <p class="section-eyebrow">About ControlFreak</p>
+        <h2>Built for personal sovereignty.</h2>
+        <p>
+          ControlFreak was born out of frustration with productivity apps that either do
+          too little or invade your privacy to do it. Most apps fragment your life across
+          six tools, sell your habits to advertisers, and bury useful data in dashboards
+          designed to maximise engagement — not clarity.
+        </p>
+        <p>
+          We believe your data belongs to you, your patterns are yours alone, and software
+          should earn your attention by being genuinely useful — not by manufacturing
+          dependency.
+        </p>
+        <p>
+          ControlFreak is designed for people who want to see their life clearly, act on it
+          deliberately, and move through the day without friction. It is opinionated about
+          privacy, minimal about noise, and precise about the details that actually matter.
+        </p>
+      </div>
+      <div class="about-values">
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h4>Minimalist Precision</h4>
+            <p>Every feature earns its place. Nothing is added because a competitor has it.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h4>Calm Through Competence</h4>
+            <p>The app should reduce cognitive load, not add to it. Information density
+               without visual noise.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h4>Privacy as a Constraint</h4>
+            <p>Privacy is not a feature toggle — it is a design constraint that shapes
+               every architectural decision.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h4>iOS Native First</h4>
+            <p>Built with Capacitor on a native iOS foundation. Respects the Apple
+               ecosystem — HealthKit, Calendar, and platform conventions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ─────────────────────────────────────────── -->
+  <section class="contact-section" id="contact">
+    <p class="section-eyebrow">Get In Touch</p>
+    <h2>Coming to the App Store</h2>
+    <p class="section-lead">
+      ControlFreak is currently in development. Join the waitlist to be notified when
+      it launches, or reach out with questions.
+    </p>
+    <form class="contact-form" action="#" onsubmit="return false;">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="4" placeholder="Questions, feedback, or just say hi…"></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ── PRIVACY POLICY ─────────────────────────────────── -->
+  <section id="privacy-policy" style="padding: 6rem 5%; background: var(--white);">
+    <div class="policy-section">
+      <p class="section-eyebrow">Legal</p>
+      <h2>Privacy Policy</h2>
+      <p><em>Effective date: 5 May 2026</em></p>
+
+      <h3>Overview</h3>
+      <p>
+        ControlFreak ("we", "our", "the app") is committed to protecting your personal
+        information. This Privacy Policy explains what data the app accesses, how it is
+        used, and how it is protected. By using ControlFreak, you agree to the practices
+        described in this policy.
+      </p>
+
+      <h3>Data We Access</h3>
+      <p>ControlFreak may request access to the following on your device:</p>
+      <ul>
+        <li><strong>Apple HealthKit</strong> — workout sessions, sleep data, activity rings,
+            and related health metrics. This data is read-only and processed entirely on your device.</li>
+        <li><strong>Calendar</strong> — to display your schedule in the Work view. We do not
+            modify your calendar without explicit action from you.</li>
+        <li><strong>Location</strong> — optionally, for logistics and group plan features.
+            Location data is not stored on our servers.</li>
+      </ul>
+
+      <h3>Data Storage</h3>
+      <p>
+        All personal, wellness, and work data is stored locally on your device using an
+        on-device SQLite database. This data is <strong>never transmitted to our servers</strong>.
+      </p>
+      <p>
+        Group Plan data — limited to itinerary stops, timing, and group membership —
+        may be stored in our cloud infrastructure (Supabase) solely to enable coordination
+        with other users you have explicitly invited. This data does not include your health,
+        sleep, workout, or personal notes.
+      </p>
+
+      <h3>Data We Do Not Collect</h3>
+      <ul>
+        <li>We do not collect analytics on your app usage.</li>
+        <li>We do not sell, rent, or share your personal data with third parties for
+            advertising purposes.</li>
+        <li>We do not build behavioural profiles.</li>
+        <li>We do not use your HealthKit data for advertising or user profiling.</li>
+      </ul>
+
+      <h3>Third-Party Services</h3>
+      <p>ControlFreak uses the following third-party services in limited contexts:</p>
+      <ul>
+        <li><strong>Mapbox</strong> — for map rendering in logistics features. Mapbox may
+            receive anonymised map tile requests.</li>
+        <li><strong>Supabase</strong> — for Group Plan cloud storage. Supabase is hosted
+            in the European Union and is subject to GDPR-compliant data handling.</li>
+        <li><strong>Foursquare / Venue APIs</strong> — for place search in logistics
+            features. Only the search query is sent; no personal data is attached.</li>
+      </ul>
+
+      <h3>HealthKit Data</h3>
+      <p>
+        ControlFreak accesses Apple HealthKit data in accordance with Apple's HealthKit
+        policies. HealthKit data is used solely to display your health metrics within
+        the app. It is not shared with third parties, used for advertising, or uploaded
+        to any server.
+      </p>
+
+      <h3>Children's Privacy</h3>
+      <p>
+        ControlFreak is not directed at children under the age of 13. We do not knowingly
+        collect personal data from children.
+      </p>
+
+      <h3>Your Rights</h3>
+      <p>
+        Because your personal data is stored locally on your device, you have full control
+        over it at all times. You can delete the app — and all associated local data — at
+        any time. For Group Plan data stored in the cloud, you may request deletion by
+        contacting us.
+      </p>
+
+      <h3>Changes to This Policy</h3>
+      <p>
+        We may update this Privacy Policy from time to time. Changes will be posted on this
+        page with an updated effective date. Continued use of the app after changes constitutes
+        acceptance.
+      </p>
+
+      <h3>Contact</h3>
+      <p>
+        For any privacy-related questions or data deletion requests, contact us at:<br/>
+        <a href="mailto:privacy@controlfreakapp.com" style="color: var(--accent);">
+          privacy@controlfreakapp.com
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer>
+    <div>
+      <div class="footer-brand">ControlFreak</div>
+      <div class="footer-tagline">Your Life, Under Control. &copy; 2026 ControlFreak. All rights reserved.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#privacy-policy">Privacy Policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </footer>
+  <div class="footer-bottom">
+    ControlFreak is an independent iOS application. Apple and HealthKit are trademarks of Apple Inc.
+  </div>
 
 </body>
 </html>
