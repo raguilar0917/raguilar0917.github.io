@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["92J47YYBAX.com.ctrlfreak.app"],
+        "components": [
+          {
+            "/": "/join*",
+            "comment": "Plan invite deep links — https://ctrlfreak.app/join?code=XXXXXX"
+          }
+        ]
+      }
+    ]
+  }
+}
